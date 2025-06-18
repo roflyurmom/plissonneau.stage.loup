@@ -5,7 +5,6 @@ import java.util.List;
 
 public class ContactManager {
 	
-	
 	private List <Contact> contactListe = new ArrayList<>();
 
 	public List<Contact> getContact() {
