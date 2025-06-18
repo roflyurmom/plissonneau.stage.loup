@@ -8,7 +8,7 @@ public class ContactManager {
 	private List <Contact> contactListe = new ArrayList<>();
 
 	public List<Contact> getContact() {
-	return contactListe;
+	 return contactListe;
 	}
 
 	public void ajouterContact(Contact pContact) {
