@@ -11,12 +11,12 @@ public class ContactManager {
 	 return contactListe;
 	}
 
-	public void ajouterContact(Contact pContact) {
-		contactListe.add(pContact);
+	public boolean ajouterContact(Contact pContact) {
+		return contactListe.add(pContact);
     }
     
     public void supprimerContact(Contact pContact) {
-    	contactListe.remove(pContact);
+    	contactListe.remove(pContact);	
     }
     
     public void afficherContact(Contact pContact, String parametre) {
@@ -27,5 +27,53 @@ public class ContactManager {
     	
     	System.err.println(parametre);
     }
+    public String listerContacts() {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Contact c : contactListe) {
+
+            sb.append(c.toString()).append("\n");
+
+        }
+
+        return sb.toString();
+
+    }
+
+ 
+
+    public Contact trouverContact(String nom) {
+
+        for (Contact c : contactListe) {
+
+            if (c.getNom().equalsIgnoreCase(nom)) {
+
+                return c;
+
+            }
+
+        }
+
+        return null;
+
+   
+   } 
     
+    public void supprimerContact(String pNom, String pPrenom) {
+    	
+    	for(int i= 0;  i<contactListe.size(); i++) {
+    		
+    		Contact contact = contactListe.get(i);
+    		String nom = contact.getNom();
+    		String prenom = contact.getPrenom();
+    		
+    		if (nom.equalsIgnoreCase(pNom)  &&
+    				prenom.equalsIgnoreCase(pPrenom)) {
+    		  contactListe.remove(i);
+    		}
+    		
+    	}
+    	
+    }
 }

@@ -2,11 +2,23 @@ package plissonneau.stage.loup.contact;
 
 public class Contact {
 	
-	
+
+	public Contact(String nom, String prenom, String numero) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.numero = numero;
+	}
+
+	public Contact() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private String nom;
 	private String prenom;
 	private String numero;
-
+    
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.err.println("bienvenue Loup!");
@@ -20,10 +32,14 @@ public class Contact {
 //		System.err.println(loup.getNumero());
 		
 		ContactManager pContactManager = new ContactManager();
-		pContactManager.ajouterContact(loup);
+		System.err.println("Resultat ajout " + pContactManager.ajouterContact(loup));
+		
+		
 		
 		System.out.println(pContactManager.getContact().size());
 		pContactManager.afficherContact(loup, "Ceci est un paramètre");
+		
+		
 	}
 
 	public String getNom() {
@@ -48,5 +64,10 @@ public class Contact {
 	
 	public void setNumero(String pNumero) {
 		numero = pNumero;
+	}
+	
+	public String toString() {
+		return nom + " " + prenom + " " + numero;
+		
 	}
 }
