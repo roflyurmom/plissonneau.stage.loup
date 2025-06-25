@@ -17,6 +17,7 @@ public class ContactManager {
     
     public void supprimerContact(Contact pContact) {
     	contactListe.remove(pContact);	
+    	
     }
     
     public void afficherContact(Contact pContact, String parametre) {
@@ -27,11 +28,13 @@ public class ContactManager {
     	
     	System.err.println(parametre);
     }
-    public String listerContacts() {
+    
+    
+    public String listerContacts(List<Contact> listContacts) {
 
         StringBuilder sb = new StringBuilder();
 
-        for (Contact c : contactListe) {
+        for (Contact c : listContacts) {
 
             sb.append(c.toString()).append("\n");
 
