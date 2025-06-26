@@ -20,7 +20,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public final class FenetrePrincipale {
 	 private JFrame frame;
 
-	    private JTextField tfNom, tfPrenom, tfTelephone;
+	    private JTextField tfNom, tfPrenom, tfTelephone, tfMessage;
 
 	    private JTextArea taContacts;
 
@@ -28,6 +28,7 @@ public final class FenetrePrincipale {
 
 	    
 	    DatabaseManager DBManager = new DatabaseManager();
+	    SmsManager SMSManager = new SmsManager();
 	    
 	    public FenetrePrincipale() {
 
@@ -94,7 +95,13 @@ catch (IllegalAccessException e) {
      panel.add(tfTelephone);
      panel.add(new JLabel(""));
 
-   
+     panel.add(new JLabel("Message :"));
+
+     tfMessage = new JTextField();
+
+     panel.add(tfMessage);
+     panel.add(new JLabel(""));
+
      
      JPanel boutonPall = new JPanel();
      boutonPall.setLayout(new GridLayout(4, 3));
@@ -131,21 +138,21 @@ catch (IllegalAccessException e) {
 
 
      JButton btnEnvoyerSMS = new JButton("Envoyer SMS");
-		btnEnvoyerSMS.addActionListener(new ActionListener() {
+	btnEnvoyerSMS.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String numero = tfTelephone.getText();
+				String message = tfMessage.getText();
+			    SMSManager.sendMessage(numero, message);
 				
 			}
 		});
 		boutonPall.add(btnEnvoyerSMS);
   
      taContacts = new JTextArea();
-
      taContacts.setEditable(false);
 
      JScrollPane scroll = new JScrollPane(taContacts);
-
-
 
      frame.add(panel, BorderLayout.NORTH);
 
